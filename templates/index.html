@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %} 
+<main class="container">
+    <div class="card card-body" >
+            <h1 class="text-center">Bienvenido</h1>
+        <div style="text-align: center;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam repudiandae, voluptate nesciunt quaerat labore, deserunt consequatur, error dolores voluptas quae incidunt ipsam quis blanditiis maiores magni optio. Odio enim consectetur dolorem ipsam in unde eligendi? Ipsum, amet magnam. Possimus enim, sint ipsum, amet dolorem eum quo voluptate illum veniam nihil a inventore! Vero rerum sed veritatis hic cum ad exercitationem mollitia nihil nemo! Sequi delectus possimus optio deserunt, voluptates molestiae ex harum provident laborum quam alias minima doloremque saepe voluptate blanditiis incidunt adipisci magnam non assumenda ea facilis dolor sunt asperiores odit. Eos officia accusantium ipsam voluptatum sequi quasi eveniet!</p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'create' %}" class="btn btn-primary">Crear Tarea</a>
+            <a href="{% url 'task_complete_all' %}" class="btn btn-primary">Tareas Completadas</a>
+            <a href="{% url 'task' %}" class="btn btn-primary">Mis Tareas</a>
+            {% else %}
+            <a href="{% url 'signup' %}" class="btn btn-primary">Registrarse</a>
+            <a href="{% url 'signin' %}" class="btn btn-primary">Iniciar sesion</a>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

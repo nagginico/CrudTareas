@@ -1,0 +1,38 @@
+{% extends "layout/base.html" %}
+{% block title %} Tareas {% endblock %}
+{% block content %}
+
+<main class="card card-body" style="margin: 10px;">
+    <div class ='div'>
+        <div style="justify-content: flex-end; display: flex; ">
+            <a href="{% url 'create' %}" class="btn btn-primary" style="margin: 1px;">Crear</a>
+            <a href="{% url 'task_complete_all' %}" class="btn btn-primary" style="margin: 1px;">Completadas</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tituto:</th>
+                    <th scope="col">Fecha creacion:</th>
+                    <th scope="col">Importante:</th>
+                </tr>
+            </thead>
+            {% for task in tasks %}
+            {% if task.datecompleted == None %}
+            <tbody>
+                <tr>
+                    <th scope="row"> <a href="{% url 'task_detail' task.id %}" style="text-decoration: none; color: gray;">{{ task.tittle }} </a></th>
+                    <td>{{ task.created }} </td>
+                    {% if task.important == True %}
+                    <td>Si</td>
+                    {% else %}
+                    <td>No</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+            {% endif %}  
+            {% endfor %}
+        </table>
+    </br>        
+    </div>
+</main>
+{% endblock %}

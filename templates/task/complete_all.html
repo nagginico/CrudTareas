@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+{% block title %} Tareas Completadas {% endblock %}
+{% block content %}
+<main class="card card-body" style="margin: 10px;">
+    <div class ='div'>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tituto:</th>
+                    <th scope="col">Fecha creacion:</th>
+                </tr>
+            </thead>
+            {% for task in tasks %}
+            {% if task.datecompleted is not None %}
+            <tbody>
+                <tr>
+                    <th scope="row"> <a href="{% url 'task_detail' task.id %}" style="text-decoration: none; color: gray;">{{ task.tittle }} </a></th>
+                    <td> {{ task.created }} </td>
+                </tr>
+            </tbody>
+            {% endif %}  
+            {% endfor %}
+        </table>
+    </br>        
+    </div>
+</main>
+
+{% endblock %}

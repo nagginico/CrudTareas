@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+{% block title %}Iniciar Sesion{% endblock %}
+{% block content %}
+
+<p class="error"> {{error}} </p>
+<main>     
+    <form class="card card-body" method="POST" style="align-items: center; position: relative; ">
+        {% csrf_token %}
+            
+        Usuario:  <p>{{ form.username }}</p>
+        Contraseña: <p> {{ form.password }} </p>
+            
+        <div class="col-12" style="text-align: center;">
+            <input type="submit" value="Iniciar" class = "btn btn-primary">
+        </div>
+    </form>
+</main>
+    
+{% endblock %}

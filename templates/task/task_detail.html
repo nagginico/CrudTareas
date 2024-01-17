@@ -1,0 +1,35 @@
+{% extends "layout/base.html" %}
+{% block title %} Mis Tareas {% endblock %}
+
+{% block content %}
+
+<p>Detalles</p>
+<h1> {{ task.tittle }} </h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+    <br>
+    
+</form>
+{% if task.datecompleted is  None %}
+    <form action="{% url 'task_complete' task.id %}" method="POST">
+        {% csrf_token %}
+        <button>
+            Completado
+        </button>
+{% else %}
+    <form action="{% url 'task_not_complete' task.id %}" method="POST">
+        {% csrf_token %}
+        <button>
+            No Completado
+        </button>
+{% endif %}
+</form>
+<form action="{% url 'task_delete' task.id %}" method="POST">
+    {% csrf_token %}
+    <button>
+        Borrar
+    </button>
+</form>
+{% endblock %}
